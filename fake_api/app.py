@@ -29,6 +29,9 @@ def user():
         }
     ]
 
+@app.route("/qnpaper")
+def qnpaper():
+    return ["65", "66"]
 
 @app.route("/mock")
 def subjects():
@@ -36,11 +39,16 @@ def subjects():
 
 @app.route("/qns")
 def qn():
-    return {"65":{"q" : "What is your Name?", "type":"mcq"}, "66":{"q":"What is your guardians Name?", "type":"msq"}}
+    return [{"id":"65","q" : "What is your Name?", "type":"mcq", "ans": [{"id":"1", "a":"Manish"},{"id":"2", "a":"Suresh"},{"id":"3", "a":"World"},{"id":"4", "a":"Earth"}]}, {"id":"66","q":"What is your guardians Name?", "type":"msq", "ans": [{"id":"5", "a":"Sujatha"},{"id":"6", "a":"Suresh"},{"id":"7", "a":"Sumathi"},{"id":"8", "a":"Baby"}]}]
 
-@app.route("/ans")
-def ans():
-    return [{"65":[{"id":"1", "a":"Manish"},{"id":"2", "a":"Suresh"},{"id":"3", "a":"World"},{"id":"4", "a":"Earth"}],"66":[{"id":"5", "a":"Sujatha"},{"id":"6", "a":"Suresh"},{"id":"7", "a":"Sumathi"},{"id":"8", "a":"Baby"}]}]
+@app.route("/qns/65")
+def qna():
+    return {"id":"65","q" : "What is your Name?", "type":"mcq", "ans": [{"id":"1", "a":"Manish"},{"id":"2", "a":"Suresh"},{"id":"3", "a":"World"},{"id":"4", "a":"Earth"}]}
+
+@app.route("/qns/66")
+def qnb():
+    return {"id":"66","q":"What is your guardians Name?", "type":"msq", "ans": [{"id":"5", "a":"Sujatha"},{"id":"6", "a":"Suresh"},{"id":"7", "a":"Sumathi"},{"id":"8", "a":"Baby"}]}
+
 
 @app.route("/submit", methods=["POST"])
 def submit():

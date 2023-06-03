@@ -6,15 +6,22 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
   },
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.1.1",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "@motionone/solid": "^10.16.2",
     "@solidjs/router": "^0.8.2",
+    "framer-motion": "^10.12.12",
+    "motion": "^10.16.2",
     "solid-js": "^1.6.10"
   }
 }

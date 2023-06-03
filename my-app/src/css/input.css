@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer components {
+    .nav-btn {
+      @apply no-underline font-bold text-base p-2 px-8 hover:bg-textcut-light dark:hover:bg-textcut-dark hover:text-div-light dark:hover:text-div-dark hover:line-through transition-all duration-300;
+    }
+    .btn{
+        @apply p-2 px-4 border-2 border-textcut-light dark:border-textcut-dark rounded-md hover:bg-textcut-light dark:hover:bg-textcut-dark hover:text-div-light dark:hover:text-div-dark hover:line-through font-semibold transition-all duration-300;
+    }
+    .topic{
+      @apply font-bold text-2xl line-through text-center p-2 px-8  bg-textcol-light dark:bg-textcol-dark text-div-light dark:text-div-dark;
+    }
+    .qnBtn{
+      @apply w-16 h-16 rounded-full border-2 border-bordercol-light dark:border-bordercol-dark;
+    }
+    .correctBtn{
+      @apply w-16 h-16 rounded-full text-black bg-green-500;
+    }
+    .wrongBtn{
+      @apply w-16 h-16 rounded-full text-black bg-red-500 ;
+    }
+  }

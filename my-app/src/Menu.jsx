@@ -1,0 +1,24 @@
+import {user} from './js/store.js'
+import {animate, stagger} from 'motion'
+import { createSignal, createEffect } from 'solid-js';
+const [link, setLink] = createSignal("/");
+const Menu = () => {
+    createEffect(() => {
+        setLink(window.location.pathname)
+    })
+    return (
+        <>  
+            
+            <div class="w-full h-screen fixed menu hidden gap-4 lg:gap-8 xl:gap-16 flex-col text-textcol-light dark:text-textcol-dark justify-center items-center p-16 mt-0 bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl border-t-0">
+                <button onClick={el => {animate(".menu",{opacity:[1,0]}, {duration:.5}); animate(".menu", {display:'none'}, {delay:.5,duration:0.1})}} className="absolute top-5 right-5 font-miracle font-black text-5xl cursor-pointer hover:animate-pulse">X</button>
+                <a href="/" class={`nav-btn text-5xl w-[250px] text-center ${(link() == "/") ? 'bg-textcut-light dark:bg-textcut-dark text-div-light dark:text-div-dark line-through': ''}`}>Home</a>
+                <a href="/mock" class={`nav-btn text-5xl w-[250px] text-center ${(link() == "/mock") ? 'bg-textcut-light dark:bg-textcut-dark text-div-light dark:text-div-dark line-through': ''}`}>Mock</a>
+                <a href="/about" class={`nav-btn text-5xl w-[250px] text-center ${(link() == "/about") ? 'bg-textcut-light dark:bg-textcut-dark text-div-light dark:text-div-dark line-through': ''}`}>About</a>
+                <a href="/profile" class={`nav-btn text-5xl w-[250px] text-center ${(link() == "/profile") ? 'bg-textcut-light dark:bg-textcut-dark text-div-light dark:text-div-dark line-through': ''}`}>Profile</a>
+                <a href="/donate" class={`nav-btn text-5xl w-[250px] text-center ${(link() == "/donate") ? 'bg-textcut-light dark:bg-textcut-dark text-div-light dark:text-div-dark line-through': ''}`}>Donate</a>
+            </div>
+        </>
+    )
+}
+
+export default Menu

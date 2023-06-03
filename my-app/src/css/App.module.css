@@ -43,18 +43,7 @@
 
 
 
-.introbox {
-  padding: 50px;
-  margin: 5px;
-  margin-top: 0;
-  height: 300px;
-  background-color: var(--divbg);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
 
-  border: 2px solid var(--yellow);
-  border-top: 0;
-}
 
 .text {
   font-family: 'Montserrat';
@@ -63,16 +52,7 @@
   text-decoration: none;
 }
 
-.user {
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1), 200ms;
-  text-decoration: none;
-}
 
-.user:hover {
-  color: var(--textcutthru);
-  text-decoration: line-through;
-  cursor: pointer;
-}
 .btn {
   padding: 10px 15px;
   font-family: 'Miracle';
@@ -271,7 +251,7 @@ hr{
   text-align: center;
 }
 
-@media only screen and (max-width: 1060px) {
+/* @media only screen and (max-width: 1060px) {
   
   #middleinnerbox a,
     #topinnerbox a,
@@ -396,4 +376,4 @@ hr{
   .exams{
     flex-wrap: wrap;
   }
-}
+} */

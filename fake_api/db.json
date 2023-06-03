@@ -1,0 +1,15 @@
+{
+    "users": [
+      { "id": 1, "name": "Manish", "level": "Diploma", "age": 23, "subjects":[["Machine Learning Techniques", "mlt"], ["Machine Learning Foundations", "mlf"], ["Modern Application Development 2", "mad2"]] },
+      { "id": 2, "name": "Rahul", "level": "B.Tech", "age": 22 },
+      { "id": 3, "name": "Rohit", "level": "B.Tech", "age": 21 },
+      { "id": 4, "name": "Raj", "level": "B.Tech", "age": 20 },
+      { "id": 5, "name": "Ravi", "level": "B.Tech", "age": 19 },
+      { "id": 6, "name": "Rajesh", "level": "B.Tech", "age": 18 },
+      { "id": 7, "name": "Rakesh", "level": "B.Tech", "age": 17 },
+      { "id": 8, "name": "Rajat", "level": "B.Tech", "age": 16 },
+      { "id": 9, "name": "Rajeev", "level": "B.Tech", "age": 15 }
+    ],
+    "qnpaper": { "id": 1, "qns": ["65","66"] },
+    "qns": { "1":{"65": {"qn":"What is your name?", "type":"mcq", "answer":{"id":"20", "ans":[["Manish"], "This", "That", "yes"]}}, "66":{"qn":"What is your guardians name?", "type":"mcq", "answer":{"id":"20", "ans":["Manish", "This", "That", "yes"]}}}, "2":{"15":{"qn":"Is your name manish?", "type":"mcq", "answer":{"id":"20", "ans":["Manish", "This", "That", "yes"]}}, "16":{"qn":"What is your mothers name?","type":"mcq", "answer":{"id":"20", "ans":["Manish", "This", "That", "yes"]}}} }
+}

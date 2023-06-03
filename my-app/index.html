@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="./src/assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="./src/assets/images/favicon.ico" type="image/x-icon">
   <meta name="theme-color" content="#000000" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/src/css/styles.css">
+  <link rel="stylesheet" href="/src/css/output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <script src="https://kit.fontawesome.com/644013b31e.js" crossorigin="anonymous"></script>
   <title>Mock App</title>
 </head>
 
-<body>
+<body class="bg-page-light dark:bg-page-dark text-textcol-light dark:text-textcol-dark font-outfit">
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <footer class="com-footer" style="position: fixed;bottom:0;background-color:var(--divbg);width:100vw;text-align:center;padding:5px;font-family:'Miracle';">Created by <span class="founders">Abulaman</span> (21f1000506) and <span class="founders">Manish</span> (21f3002911)</footer>
+  <footer
+    class="text-textcol-light dark:text-textcol-dark font-outfit fixed bottom-0 bg-div-light dark:bg-div-dark w-screen text-center">
+    Created by <span class="founders">Abulaman</span> (21f1000506) and <span class="founders">Manish</span> (21f3002911)
+  </footer>
   <script src="/src/index.jsx" type="module"></script>
+  <script src="/src/js/darkMode.js"></script>
 </body>
 
 </html>
