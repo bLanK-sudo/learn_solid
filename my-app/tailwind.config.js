@@ -20,11 +20,11 @@ module.exports = {
         },
         'textcut':{
           light:'#0a0908',
-          dark:'#8edce6'
+          dark:'#FEAE73'
         },
         'bordercol':{
           light:'#151515',
-          dark:'#8edce6'
+          dark:'#FEAE73'
         }
       }
     },

@@ -31,7 +31,7 @@ def user():
 
 @app.route("/qnpaper")
 def qnpaper():
-    return ["65", "66"]
+    return ["65", "66", "67"]
 
 @app.route("/mock")
 def subjects():
@@ -39,7 +39,7 @@ def subjects():
 
 @app.route("/qns")
 def qn():
-    return [{"id":"65","q" : "What is your Name?", "type":"mcq", "ans": [{"id":"1", "a":"Manish"},{"id":"2", "a":"Suresh"},{"id":"3", "a":"World"},{"id":"4", "a":"Earth"}]}, {"id":"66","q":"What is your guardians Name?", "type":"msq", "ans": [{"id":"5", "a":"Sujatha"},{"id":"6", "a":"Suresh"},{"id":"7", "a":"Sumathi"},{"id":"8", "a":"Baby"}]}]
+    return [{"id":"65","q" : "What is your Name?", "type":"mcq", "ans": [{"id":"1", "a":"Manish"},{"id":"2", "a":"Suresh"},{"id":"3", "a":"World"},{"id":"4", "a":"Earth"}]}, {"id":"66","q":"What is your guardians Name?", "type":"msq", "ans": [{"id":"5", "a":"Sujatha"},{"id":"6", "a":"Suresh"},{"id":"7", "a":"Sumathi"},{"id":"8", "a":"Baby"}]}, {"id":"67","q" : "What is your Name?", "type":"text", "ans": [{"id":"17","a":""}]}]
 
 @app.route("/qns/65")
 def qna():
@@ -52,8 +52,7 @@ def qnb():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    print(request.form)
-    print(request.form.getlist('66'))
-    return redirect('http://localhost:3000/mock')
+    print(request.json)
+    return {"status": "success"}
 
 app.run(port=5000, debug=True)

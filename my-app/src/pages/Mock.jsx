@@ -1,27 +1,24 @@
-import styles from "./css/App.module.css";
 import { Motion } from "@motionone/solid";
-import Nav from './Nav.jsx'
-import Menu from "./Menu";
-import {user, fetchData} from './js/store.js'
+import Nav from '../Components/Nav.jsx'
+import Menu from "../Components/Menu";
+import {user, fetchData} from '../js/store.js'
 import { Switch, createEffect } from "solid-js";
+import { A } from '@solidjs/router';
 
 const subjectsPicked = () => user()[0]["subjects"]
 
 
-
-const exams = () => [["Quiz 1", "q1"], ["Quiz 2", "q2"], ["End Term", "et"]]
-const subjects = () => [["Mordern Application Development 1", "mad1"], ["Mathematics 1", "maths1"], ["Mathematics2","maths2"], ["Statistics 1", "stats1"], ["Computational Thinking", "ct"]]
 const Mock = () => {
 return (
 <>
-<Motion animate={{opacity:[0, 1]}} transition={{ duration: .5, easing: "ease-in-out" }}>
+<Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
     <Menu />
     <Nav />
     <div class="p-8 m-[5px] mt-0 h-[300px] text-textcol-light dark:text-textcol-dark bg-div-light dark:bg-div-dark border-2 border-bordercol-light dark:border-bordercol-dark rounded-bl-xl rounded-br-xl border-t-0  grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Show when={user()} fallback={<p>Loading.....</p>}>
             <Switch fallback={<p>Loading ...</p>}>
                 <Match when={subjectsPicked()==null}>
-                    <p class={styles.picksub}>You have not picked any subjects yet. Go to your profile and pick the
+                    <p class="text-lg">You have not picked any subjects yet. Go to your profile and pick the
                         subjects
                         you have taken for this term.</p>
                 </Match>

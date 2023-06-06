@@ -1,18 +1,18 @@
 import { createEffect } from 'solid-js';
-import styles from './css/App.module.css'
 import {animate} from 'motion'
+import { A } from '@solidjs/router';
 
 export default () => {
 return (
 <div class="flex justify-between text-textcol-light dark:text-textcol-dark flex-row bg-div-light dark:bg-div-dark font-outfit m-[5px] my-0 border-2 border-bordercol-light dark:border-bordercol-dark border-y-0">
     <div class="flex gap-4 items-center">
-        <a href="/" class='nav-btn'>bLanK</a>
+        <A href="/" class='nav-btn'>bLanK</A>
     </div>
     <div class="hidden md:flex gap-4 items-center">
-        <a href="/mock" class='nav-btn'>Mock</a>
-        <a href="/about" class='nav-btn'>About</a>
-        <a href="/profile" class='nav-btn'>Profile</a>
-        <a href="/donate" class='nav-btn'>Donate</a>
+        <A href="/mock" class='nav-btn'>Mock</A>
+        <A href="/about" class='nav-btn'>About</A>
+        <A href="/profile" class='nav-btn'>Profile</A>
+        <A href="/donate" class='nav-btn'>Donate</A>
     </div>
     <div class="hidden md:flex gap-8 items-center no-underline font-bold text-md px-8">
         <div class="theme-toggle">
