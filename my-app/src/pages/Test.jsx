@@ -16,8 +16,8 @@ const qnType = (e) => {
     else return "textarea"
 }
 
-function replaceFunction(name){
-    window.location.replace("/"+name+"/mock");
+function replaceFunction(url){
+    window.location.replace(url);
 }
 
 
@@ -43,10 +43,12 @@ const Test = (id) => {
     const [qns, setQns] = createSignal([])
     const [start, showStart] = createSignal(true)
     const [all, setAll] = createSignal(false)
-
+    const [submit, setSubmit] = createSignal(false)
+    const [completed, setCompleted] = createSignal(0)
+    const [notCompleted, setNotCompleted] = createSignal(0)
     fetchData("http://localhost:5000/qnpaper", setqnId)
     fetchData("http://localhost:5000/qns", setQns)
-
+    let count = 0
     return <>
         
         <Show when={qnId()} fallback={<p>Loading.....</p>}>
@@ -143,11 +145,24 @@ const Test = (id) => {
                     </Show>
                 </Show>
             </div>
-            <button onClick={() => {}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+            <button onClick={() => setSubmit(true)} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>
-                        
+
+        {submit() &&
+            <div className="absolute inset-0 bg-div-light dark:bg-div-dark z-0 flex justify-center items-center">
+            {console.log(selected)}
+            {Object.values(selected).forEach(el => {
+                if(el.length > 0) count += 1
+            })}
+            <div className="flex flex-col gap-4">
+            <p>Answered : {count}</p>
+            <p>Not Answered : {qnId().length - count}</p>
+            <button class="btn" onClick={() => {replaceFunction("/mock")}}>DONE</button>
+            </div>
+            </div> 
+        }     
         
     </>
 
