@@ -21,12 +21,12 @@ return (
         see you! </p>
       <div class="flex gap-6 pt-4">
         <A href="/mock" class="btn text-[10px] sm:text-xs md:text-xl w-max">Attempt mock</A>
-        <A href="/mock" class="btn text-[10px] sm:text-xs md:text-xl w-max">Previous attempts</A>
+        <A href="/coming-soon" class="btn text-[10px] sm:text-xs md:text-xl w-max flex gap-[5px]">Upcoming <span class="hidden md:block">Features</span></A>
       </div>
     
 
   </div>
-  <div class="flex items-start m-2 gap-8">
+  <div class="flex items-start m-2 gap-8  mb-16">
     <div class="grid grid-cols-1 md:grid-cols-2 w-screen flex-wrap gap-4">
       <div class='bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl'>
         <h3 class='topic'>Subjects</h3>
@@ -46,14 +46,10 @@ return (
         </div>
       </div>
       <div class='bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl'>
-        <h3 class='topic'>Exams</h3>
-        <div class="p-4">
-        <p>All the upcoming exams for this term is displayed here</p>
-        <ul class='list-disc pl-4'>
-          <li><A class='underline' href="/exam/q1">Quiz 1</A></li>
-          <li><A class='underline' href="/exam/q2">Quiz 2</A></li>
-          <li><A class='underline' href="/exam/et">End Term</A></li>
-        </ul>
+        <h3 class='topic'>About</h3>
+        <div class="p-4 flex flex-col gap-4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloremque temporibus ipsa porro error laborum similique, facere harum veritatis esse!</p>
+        <A class="text-bordercol-light dark:text-bordercol-dark underline" href="/about">View More</A>
         </div>
       </div>
 

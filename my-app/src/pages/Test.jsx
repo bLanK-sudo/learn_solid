@@ -73,7 +73,7 @@ const Test = (id) => {
                             <For each={qn.ans}>{
                                 (ans, i) => {
                                     return <div class="flex gap-2 items-center">
-                                        <input type={qnType(qn.type)} class="w-max h-max bg-div-light dark:bg-div-dark border-none outline-none"  id={ans.id} value={ans.a} />
+                                        <input type={qnType(qn.type)}  id={ans.id} value={ans.a} />
                                         <label for={ans.id}>{ans.a}</label>
                                     </div>
                                 }

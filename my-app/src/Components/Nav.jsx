@@ -10,7 +10,7 @@ return (
     </div>
     <div class="hidden md:flex gap-4 items-center">
         <A href="/mock" class='nav-btn'>Mock</A>
-        <A href="/about" class='nav-btn'>About</A>
+        <A href="/report" class='nav-btn'>Report</A>
         <A href="/profile" class='nav-btn'>Profile</A>
         <A href="/donate" class='nav-btn'>Donate</A>
     </div>

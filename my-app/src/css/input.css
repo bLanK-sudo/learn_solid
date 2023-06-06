@@ -24,4 +24,13 @@
     .wrongBtn{
       @apply w-16 h-16 rounded-full text-black bg-red-500 ;
     }
+    .header-profile{
+      @apply text-4xl font-montserrat font-semibold
+    }
+    hr{
+      @apply border-t-2 border-bordercol-light dark:border-bordercol-dark
+    }
+    input, textarea{
+      @apply w-max h-max bg-div-light dark:bg-div-dark border-none outline-none focus:outline-none p-2
+    }
   }
