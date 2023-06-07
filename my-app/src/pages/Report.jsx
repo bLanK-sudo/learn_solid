@@ -1,5 +1,10 @@
+import { useNavigate } from "@solidjs/router"
 import Nav from "../Components/Nav"
+import { login } from "../js/store"
+
 const Report = () => {
+    const navigate = useNavigate()
+    //if(!login()) return navigate("/login", {replace:true})
     return <>
         <Nav />
         <div class="min-h-[60vh] flex flex-col justify-center items-center p-2 lg:p-8 xl:p-16">
@@ -26,7 +31,7 @@ const Report = () => {
         </div>
 
         <div className="flex flex-col gap-8 p-2 lg:p-8 xl:p-16">
-            <h3 class="text-center text-5xl w-full bg-bordercol-light dark:bg-bordercol-dark text-white p-4 dark:text-black line-through">Reported Bugs</h3>
+            <h3 class="text-center text-5xl w-full p-4 heavy-header">Reported Bugs</h3>
             <hr />
             <div className="flex flex-col pt-12 gap-4">
                 <h4 class="font-montserrat text-3xl">Title</h4>

@@ -22,6 +22,7 @@
     "@solidjs/router": "^0.8.2",
     "framer-motion": "^10.12.12",
     "motion": "^10.16.2",
-    "solid-js": "^1.6.10"
+    "solid-js": "^1.6.10",
+    "timer-node": "^5.0.7"
   }
 }

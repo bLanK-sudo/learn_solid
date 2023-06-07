@@ -1,16 +1,18 @@
 import { createSignal } from "solid-js"
-import { A } from '@solidjs/router';
+import { A, useNavigate } from '@solidjs/router';
 import Nav from "../Components/Nav"
 import { Motion } from "@motionone/solid";
-
+import { login } from "../js/store";
 
 const Profile = () => {
+    const navigate = useNavigate()
+    //if(!login()) return navigate("/login", {replace:true})
     return <>
     <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
     <Nav />
     <div className="flex flex-col text-textcol-light dark:text-textcol-dark">
         <div className="first flex flex-col mb-16">
-            <div className="h-[40vh] mx-[5px] bg-bordercol-light dark:bg-bordercol-dark relative">
+            <div style="background-image:url(./src/assets/images/try.webp); background-size:cover;background-repeat:no-repeat;" className="h-[40vh] mx-[5px] relative">
                 <div className="absolute -bottom-24 rounded-full left-0 right-0 m-auto w-48 h-48 bg-red-300"></div>
             </div>
             <div className="name text-xl pt-32 m-auto text-center">

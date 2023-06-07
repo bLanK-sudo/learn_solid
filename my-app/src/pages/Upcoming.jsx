@@ -4,7 +4,7 @@ const Upcoming = () => {
     return<>
         <Nav />
         <div class="flex flex-col">
-        <h3 class="text-center text-5xl mx-[5px] bg-bordercol-light dark:bg-bordercol-dark text-white p-4 dark:text-black line-through">Upcoming Features</h3>
+        <h3 class="text-center text-5xl mx-[5px] p-4 heavy-header">Upcoming Features</h3>
             <div className="flex flex-col gap-8 p-2 lg:p-8 xl:p-16">
             
             <hr />

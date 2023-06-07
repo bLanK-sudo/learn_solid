@@ -9,6 +9,11 @@ import Report from './pages/Report.jsx'
 import { Router, Route, Routes } from "@solidjs/router";
 import PageNotFound from './Components/PageNotFound';
 import Upcoming from './pages/Upcoming';
+import Login from './pages/Login';
+import Landing from './pages/Landing';
+import Signup from './pages/Signup';
+
+
 
 const root = document.getElementById('root');
 
@@ -24,7 +29,10 @@ render(
   () =>( 
   <Router>
     <Routes>
-      <Route path="/" component={App} />
+      <Route path="/" component={Landing} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/home" component={App} />
       <Route path="/mock" component={Mock} />
       <Route path="/mock/test/:id" component={Test} />
       <Route path="/profile" component={Profile} />

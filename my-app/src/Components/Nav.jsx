@@ -1,18 +1,20 @@
 import { createEffect } from 'solid-js';
 import {animate} from 'motion'
-import { A } from '@solidjs/router';
+import { A, useNavigate } from '@solidjs/router';
+import { setLogin } from '../js/store';
 
 export default () => {
+    const navigate = useNavigate()
 return (
 <div class="flex justify-between text-textcol-light dark:text-textcol-dark flex-row bg-div-light dark:bg-div-dark font-outfit m-[5px] my-0 border-2 border-bordercol-light dark:border-bordercol-dark border-y-0">
     <div class="flex gap-4 items-center">
-        <A href="/" class='nav-btn'>bLanK</A>
+        <A href="/home" class='nav-btn'>bLanK</A>
     </div>
     <div class="hidden md:flex gap-4 items-center">
         <A href="/mock" class='nav-btn'>Mock</A>
         <A href="/report" class='nav-btn'>Report</A>
         <A href="/profile" class='nav-btn'>Profile</A>
-        <A href="/donate" class='nav-btn'>Donate</A>
+        <A href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Sign Out</A>
     </div>
     <div class="hidden md:flex gap-8 items-center no-underline font-bold text-md px-8">
         <div class="theme-toggle">

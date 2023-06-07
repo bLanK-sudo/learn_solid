@@ -1,10 +1,10 @@
 import { For, createEffect, createSignal } from "solid-js"
-import { useBeforeLeave, useParams } from "@solidjs/router"
+import { useBeforeLeave, useNavigate, useParams } from "@solidjs/router"
 import {fetchData, postJSON } from "../js/store"
 import Nav from '../Components/Nav'
-
-
-
+import { replaceFunction } from "../js/store"
+import { login } from "../js/store"
+import { Timer, Time, TimerOptions } from 'timer-node';
 
 
 
@@ -16,19 +16,16 @@ const qnType = (e) => {
     else return "textarea"
 }
 
-function replaceFunction(url){
-    window.location.replace(url);
-}
 
 
 
 const Test = (id) => {
+
     const params = useParams();
-    window.addEventListener("popstate", (event) => {
-        console.log(
-          `location: ${document.location}, state: ${JSON.stringify(event.state)}`
-        );
-      });
+    const navigate = useNavigate()
+
+    //if(!login()) return navigate("/login", {replace:true})
+    
     useBeforeLeave(e => {
         e.preventDefault()
         setTimeout(() => {
@@ -46,11 +43,23 @@ const Test = (id) => {
     const [submit, setSubmit] = createSignal(false)
     const [completed, setCompleted] = createSignal(0)
     const [notCompleted, setNotCompleted] = createSignal(0)
+    const [startTimer, setStartTimer] = createSignal(0)
     fetchData("http://localhost:5000/qnpaper", setqnId)
     fetchData("http://localhost:5000/qns", setQns)
     let count = 0
+
+    const timer = new Timer({ label: 'test-timer' });
+    timer.start();
+
+    setTimeout(() => {
+        timer.stop();
+        console.log(timer.accumulatedMs());
+    },2000)
+
     return <>
         
+        
+
         <Show when={qnId()} fallback={<p>Loading.....</p>}>
             {start() &&
                 <div class="">
@@ -145,7 +154,7 @@ const Test = (id) => {
                     </Show>
                 </Show>
             </div>
-            <button onClick={() => setSubmit(true)} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+            <button onClick={() => {setSubmit(true); console.log(selected);}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>

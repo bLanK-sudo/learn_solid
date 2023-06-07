@@ -30,7 +30,10 @@
     hr{
       @apply border-t-2 border-bordercol-light dark:border-bordercol-dark
     }
-    input, textarea{
+    input, textarea, select{
       @apply w-max h-max bg-div-light dark:bg-div-dark border-none outline-none focus:outline-none p-2
+    }
+    .heavy-header{
+      @apply bg-bordercol-light dark:bg-bordercol-dark text-white dark:text-black line-through
     }
   }

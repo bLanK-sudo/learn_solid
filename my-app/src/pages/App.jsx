@@ -1,12 +1,15 @@
 import { Motion } from "@motionone/solid";
 import Nav from '../Components/Nav'
 import Menu from '../Components/Menu'
-import {user} from '../js/store.js'
+import {login, user} from '../js/store.js'
 import { createEffect } from 'solid-js';
-import { A } from '@solidjs/router';
+import { A, useNavigate } from '@solidjs/router';
+import { replaceFunction } from "../js/store.js";
+import { Timer, Time, TimerOptions } from 'timer-node';
+
 const App = () => {
-
-
+  const navigate = useNavigate()
+  // if(!login()) return navigate("/login", {replace:true})
 
 return (
   <>  
