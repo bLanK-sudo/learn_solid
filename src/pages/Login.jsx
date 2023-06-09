@@ -37,7 +37,7 @@ const Login = () => {
                     
 
                 }} className="font-poppins font-bold w-56 btn m-auto">Log In</button>
-                <p class="p-4">Don't have an account? <a href="/signup" class="underline px-2 text-bordercol-light dark:text-bordercol-dark">Sign Up</a></p>
+                <p class="p-4">Don't have an account? <A href="/signup" class="underline px-2 text-bordercol-light dark:text-bordercol-dark">Sign Up</A></p>
                 </div>
             </div>
             

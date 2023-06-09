@@ -30,7 +30,7 @@ const Mock = () => {
                       <For each={subjectsPicked()}>{(sub) =>
                           <div class="p-2 px-8 md:p-4 md:px-16 flex flex-col sm:flex-row rounded-md justify-between h-max border-2 border-textcut-light dark:border-textcut-dark">
                               <p class="text-xs md:text-xl w-max">{sub[0]}</p>
-                              <p class="underline"><a href={`/mock/test/${sub[1]}`} class="text-xs md:text-xl">Attempt Mock</a></p>
+                              <p class="underline"><A href={`/mock/test/${sub[1]}`} class="text-xs md:text-xl">Attempt Mock</A></p>
                           </div>
 
                           }
@@ -51,7 +51,7 @@ const Mock = () => {
 
             <For each={user()[0]["subjects"]}>{ (sub) =>
               <ul class="list-disc pl-4">
-                <li><a class='underline' href={`/subjects/${sub[1]}`}>{sub[0]}</a></li>
+                <li><A class='underline' href={`/subjects/${sub[1]}`}>{sub[0]}</A></li>
               </ul>
               }
 
@@ -65,9 +65,9 @@ const Mock = () => {
           <div class="p-4">
           <p>All the upcoming exams for this term is displayed here</p>
           <ul class="list-disc pl-4">
-            <li><a class='underline' href="/exam/q1">Quiz 1</a></li>
-            <li><a class='underline' href="/exam/q2">Quiz 2</a></li>
-            <li><a class='underline' href="/exam/et">End Term</a></li>
+            <li><A class='underline' href="/exam/q1">Quiz 1</A></li>
+            <li><A class='underline' href="/exam/q2">Quiz 2</A></li>
+            <li><A class='underline' href="/exam/et">End Term</A></li>
           </ul>
           </div>
         </div>

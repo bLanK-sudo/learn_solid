@@ -8,13 +8,13 @@ export default () => {
 return (
 <div class="flex justify-between text-textcol-light dark:text-textcol-dark flex-row bg-div-light dark:bg-div-dark font-outfit m-[5px] my-0 border-2 border-bordercol-light dark:border-bordercol-dark border-y-0">
     <div class="flex gap-4 items-center">
-        <a href="/home" class='nav-btn'>bLanK</a>
+        <A href="/home" class='nav-btn'>bLanK</A>
     </div>
     <div class="hidden md:flex gap-4 items-center">
-        <a href="/mock" class='nav-btn'>Mock</a>
-        <a href="/report" class='nav-btn'>Report</a>
-        <a href="/profile" class='nav-btn'>Profile</a>
-        <a href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Signout</a>
+        <A href="/mock" class='nav-btn'>Mock</A>
+        <A href="/report" class='nav-btn'>Report</A>
+        <A href="/profile" class='nav-btn'>Profile</A>
+        <A href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Signout</A>
     </div>
     <div class="hidden md:flex gap-8 items-center no-underline font-bold text-md px-8">
         <div class="theme-toggle">
