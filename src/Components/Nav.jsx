@@ -14,7 +14,7 @@ return (
         <A href="/mock" class='nav-btn'>Mock</A>
         <A href="/report" class='nav-btn'>Report</A>
         <A href="/profile" class='nav-btn'>Profile</A>
-        <A href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Sign Out</A>
+        <A href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Signout</A>
     </div>
     <div class="hidden md:flex gap-8 items-center no-underline font-bold text-md px-8">
         <div class="theme-toggle">
