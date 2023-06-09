@@ -11,8 +11,8 @@ const Landing = () => {
                 <p class="font-montserrat font-light text-center p-4 drop-shadow-2xl">Landing page is still under construction</p>
             </div>
             <div className="flex gap-16">
-                <A href="/login" class="btn">Login</A>
-                <A href="/signup" class="btn">SignUp</A>
+                <a href="/login" class="btn">Login</a>
+                <a href="/signup" class="btn">SignUp</a>
             </div>
         </div>
     </Motion>

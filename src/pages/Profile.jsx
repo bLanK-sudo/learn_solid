@@ -30,20 +30,20 @@ const Profile = () => {
         <div className="flex flex-col p-16 gap-4">
             <h2 class="header-profile">Subjects Picked</h2>
             <div class="flex gap-4 flex-wrap">
-            <A class="btn w-max" href="/subjects/mlt">Machine Learning Techniques</A>
-            <A class="btn w-max" href="/subjects/mlf">Machine Learning Foundations</A>
-            <A class="btn w-max" href="/subjects/mad2">Modern Application Development 2</A>
+            <a class="btn w-max" href="/subjects/mlt">Machine Learning Techniques</a>
+            <a class="btn w-max" href="/subjects/mlf">Machine Learning Foundations</a>
+            <a class="btn w-max" href="/subjects/mad2">Modern Application Development 2</a>
             </div>
         </div>
         <hr />
         <div className="flex flex-col p-16 gap-4">
             <h2 className="header-profile">Tests Taken</h2>
-            <A class="btn w-max" href="/coming-soon">Coming Soon</A>
+            <a class="btn w-max" href="/coming-soon">Coming Soon</a>
         </div>
         <hr />
         <div className="flex flex-col p-16 gap-4">
             <h2 class="header-profile">Best Performance</h2>
-            <A class="btn w-max" href="/coming-soon">Coming Soon</A>
+            <a class="btn w-max" href="/coming-soon">Coming Soon</a>
         </div>
         <hr />
         </div>
