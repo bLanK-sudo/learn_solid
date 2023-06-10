@@ -1030,6 +1030,22 @@ input:focus, textarea:focus, select:focus {
   background-color: rgb(21 21 21 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\.\.\/public\/images\/try\.webp\)\] {
+  background-image: url(../public/images/try.webp);
+}
+
+.bg-\[url\(\.\.\/\.\.\/public\/images\/try\.webp\)\] {
+  background-image: url(../../public/images/try.webp);
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .p-16 {
   padding: 4rem;
 }
