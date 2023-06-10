@@ -12,7 +12,7 @@ const Profile = () => {
     <Nav />
     <div className="flex flex-col text-textcol-light dark:text-textcol-dark">
         <div className="first flex flex-col mb-16">
-            <div style="background-image:url(./public/images/try.webp); background-size:cover;background-repeat:no-repeat;" className="h-[40vh] mx-[5px] relative">
+            <div style="background-image:url(../public/images/try.webp); background-size:cover;background-repeat:no-repeat;" className="h-[40vh] mx-[5px] relative">
                 <div className="absolute -bottom-24 rounded-full left-0 right-0 m-auto w-48 h-48 bg-red-300"></div>
             </div>
             <div className="name text-xl pt-32 m-auto text-center">
