@@ -1,9 +1,9 @@
 import { For, createEffect, createSignal } from "solid-js"
 import { useBeforeLeave, useNavigate, useParams } from "@solidjs/router"
-import {fetchData, postJSON } from "../js/store"
+import {fetchData, postJSON } from "../../public/js/store"
 import Nav from '../Components/Nav'
-import { replaceFunction } from "../js/store"
-import { login } from "../js/store"
+import { replaceFunction } from "../../public/js/store"
+import { login } from "../../public/js/store"
 import { Timer, Time, TimerOptions } from 'timer-node';
 
 
@@ -35,6 +35,7 @@ const Test = (id) => {
           }, 100);
     })
     const selected= {}
+    const timer = {}
     let mainQnDiv;
     const [qnId, setqnId] = createSignal([])
     const [qns, setQns] = createSignal([])
@@ -47,15 +48,7 @@ const Test = (id) => {
     fetchData("http://localhost:5000/qnpaper", setqnId)
     fetchData("http://localhost:5000/qns", setQns)
     let count = 0
-
-    const timer = new Timer({ label: 'test-timer' });
-    timer.start();
-
-    setTimeout(() => {
-        timer.stop();
-        console.log(timer.accumulatedMs());
-    },2000)
-
+    
     return <>
         
         

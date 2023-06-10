@@ -1,6 +1,6 @@
 import { useNavigate } from "@solidjs/router"
 import Nav from "../Components/Nav"
-import { login } from "../js/store"
+import { login } from "../../public/js/store"
 
 const Report = () => {
     const navigate = useNavigate()

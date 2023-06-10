@@ -1,7 +1,7 @@
 
 
 import { Motion } from "@motionone/solid";
-import {login, replaceFunction, setLogin} from "../js/store.js";
+import {login, replaceFunction, setLogin} from "../../public/js/store.js";
 import { useNavigate } from "@solidjs/router";
 import { A } from "@solidjs/router";
 

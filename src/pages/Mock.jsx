@@ -1,10 +1,10 @@
 import { Motion } from "@motionone/solid";
 import Nav from '../Components/Nav.jsx'
 import Menu from "../Components/Menu";
-import {user, fetchData} from '../js/store.js'
+import {user, fetchData} from '../../public/js/store.js'
 import { Switch, createEffect } from "solid-js";
 import { A, useNavigate } from '@solidjs/router';
-import { login } from "../js/store.js";
+import { login } from "../../public/js/store.js";
 
 const subjectsPicked = () => user()[0]["subjects"]
 
