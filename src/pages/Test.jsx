@@ -75,7 +75,7 @@ const Test = (id) => {
                             <For each={qn.ans}>{
                                 (ans, i) => {
                                     return <div class="flex gap-2 items-center">
-                                        <input type={qnType(qn.type)}  id={ans.id} name={qn.id} value={ans.a} />
+                                        <input type={qnType(qn.type)}  id={ans.id} name={"q" + qn.id} value={ans.a} />
                                         <label for={ans.id}>{ans.a}</label>
                                     </div>
                                 }
@@ -137,7 +137,6 @@ const Test = (id) => {
                                             timer[currentQn()] = Date.now() - startTimer()
                                         }
                                         setStartTimer(Date.now())
-                                        console.log(timer);
                                         setCurrentQn(id)
                                         Object.values(document.getElementsByClassName("qns")).forEach(el => {
                                             el.classList.add("hidden")
@@ -155,14 +154,13 @@ const Test = (id) => {
                     </Show>
                 </Show>
             </div>
-            <button onClick={() => {fullTime = Date.now() - fullTime;setSubmit(true); console.log(selected);}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+            <button onClick={() => {fullTime = Date.now() - fullTime;setSubmit(true); console.log("selected array: ",selected);console.log("timer: ",timer)}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>
 
         {submit() &&
             <div className="absolute inset-0 bg-div-light dark:bg-div-dark z-0 flex justify-center items-center">
-            {console.log(selected)}
             {Object.values(selected).forEach(el => {
                 if(el.length > 0) count += 1
             })}
@@ -170,7 +168,7 @@ const Test = (id) => {
             <p>Answered : {count}</p>
             <p>Not Answered : {qnId().length - count}</p>
             <p>Total Time Taken in ms : {fullTime}</p>
-            <button class="btn" onClick={() => {replaceFunction("/mock")}}>DONE</button>
+            <button class="btn" onClick={() => {navigate("/mock")}}>DONE</button>
             </div>
             </div> 
         }     
