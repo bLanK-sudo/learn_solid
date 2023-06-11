@@ -4,7 +4,6 @@ import {fetchData, postJSON } from "../../public/js/store"
 import Nav from '../Components/Nav'
 import { replaceFunction } from "../../public/js/store"
 import { login } from "../../public/js/store"
-import { Timer, Time, TimerOptions } from 'timer-node';
 
 
 
@@ -24,7 +23,7 @@ const Test = (id) => {
     const params = useParams();
     const navigate = useNavigate()
 
-    //if(!login()) return navigate("/login", {replace:true})
+    //if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     
     useBeforeLeave(e => {
         e.preventDefault()

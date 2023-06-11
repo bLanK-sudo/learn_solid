@@ -6,7 +6,7 @@ import Menu from "../Components/Menu"
 
 const Report = () => {
     const navigate = useNavigate()
-    if(!login()) return navigate("/login", {replace:true})
+    if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     return <>
         <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
             <Menu />

@@ -28,7 +28,7 @@ const Login = () => {
                         }
                     });
                     const data = await response.json();
-                    if(data) setLogin(true); navigate("/home", {replace:true});
+                    if(data) setLogin(true); localStorage.setItem("login", "true"); navigate("/home", {replace:true});
                     
 
                     }catch(err){

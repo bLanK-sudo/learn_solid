@@ -34,7 +34,7 @@ const Signup = () => {
                     <input type="text" name="bio" id="bio" />
                 </div>
                 <div class="w-max m-auto flex flex-col justify-center items-center">
-                <button type="submit" onClick={() => {setLogin(true); navigate("/home", {replace:true})}} className="font-poppins font-bold w-56 btn m-auto">Sign Up</button>
+                <button type="submit" onClick={() => {setLogin(true); localStorage.setItem("login", "true"); navigate("/home", {replace:true})}} className="font-poppins font-bold w-56 btn m-auto">Sign Up</button>
             <p class="p-4">Already have an account? <A href="/login" class="underline px-2 text-bordercol-light dark:text-bordercol-dark">Log In</A></p>
                 </div>
             </form>

@@ -1,15 +1,14 @@
 import { Motion } from "@motionone/solid";
 import Nav from '../Components/Nav'
 import Menu from '../Components/Menu'
-import {login, user} from '../../public/js/store.js'
+import {login, user} from '../../public../../public/js/store.js'
 import { createEffect } from 'solid-js';
 import { A, useNavigate } from '@solidjs/router';
 import { replaceFunction } from "../../public/js/store.js";
-import { Timer, Time, TimerOptions } from 'timer-node';
 
 const App = () => {
   const navigate = useNavigate()
-  if(!login()) return navigate("/login", {replace:true})
+  if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
 
 return (
   <>  
@@ -32,24 +31,14 @@ return (
   <div class="flex items-start m-2 gap-8  mb-16">
     <div class="grid grid-cols-1 md:grid-cols-2 w-screen flex-wrap gap-4">
       <div class='bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl'>
-        <h3 class='topic'>Subjects</h3>
-        <div className="p-4 px-8">
-        <p class=''>All the Subjects you have taken for this term is displayed here</p>
-        <Show when={user()} fallback={<p>Loading....</p>}>
-
-          <For each={user()[0]["subjects"]}>{ (sub) =>
-            <ul class='list-disc pl-4'>
-              <li class=''><A class='underline' href={`/subjects/${sub[1]}`}>{sub[0]}</A></li>
-            </ul>
-            }
-
-          </For>
-
-        </Show>
+        <h3 class='topic'>About</h3>
+        <div class="p-4 flex flex-col gap-4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloremque temporibus ipsa porro error laborum similique, facere harum veritatis esse!</p>
+        <A class="text-bordercol-light dark:text-bordercol-dark underline" href="/about">View More</A>
         </div>
       </div>
       <div class='bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl'>
-        <h3 class='topic'>About</h3>
+        <h3 class='topic'>Feedback</h3>
         <div class="p-4 flex flex-col gap-4">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloremque temporibus ipsa porro error laborum similique, facere harum veritatis esse!</p>
         <A class="text-bordercol-light dark:text-bordercol-dark underline" href="/about">View More</A>

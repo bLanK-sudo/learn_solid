@@ -1,9 +1,10 @@
 import { Motion } from "@motionone/solid"
 import Nav from "../Components/Nav"
 import Menu from "../Components/Menu"
+import { login } from "../../public/js/store"
 
 const Upcoming = () => {
-    if(!login()) return navigate("/login", {replace:true})
+    if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     return<>
         <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
             <Menu />

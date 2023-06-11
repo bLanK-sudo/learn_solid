@@ -1,4 +1,4 @@
-import {user} from '../../public/js/store.js'
+import {user} from '../../public../../public/js/store.js'
 import {animate, stagger} from 'motion'
 import { createSignal, createEffect } from 'solid-js';
 import { A } from '@solidjs/router';

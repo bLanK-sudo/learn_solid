@@ -818,10 +818,6 @@ input:focus, textarea:focus, select:focus {
   height: 40vh;
 }
 
-.h-\[80vh\] {
-  height: 80vh;
-}
-
 .h-max {
   height: -moz-max-content;
   height: max-content;
@@ -1030,8 +1026,8 @@ input:focus, textarea:focus, select:focus {
   background-color: rgb(21 21 21 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\.\.\/\.\.\/public\/images\/try\.webp\)\] {
-  background-image: url(../../public/images/try.webp);
+.bg-\[url\(\/images\/try\.webp\)\] {
+  background-image: url(/images/try.webp);
 }
 
 .bg-cover {
@@ -1181,6 +1177,11 @@ input:focus, textarea:focus, select:focus {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-blue-950 {
+  --tw-text-opacity: 1;
+  color: rgb(23 37 84 / var(--tw-text-opacity));
 }
 
 .text-bordercol-light {

@@ -7,7 +7,7 @@ import Menu from "../Components/Menu";
 
 const Profile = () => {
     const navigate = useNavigate()
-    if(!login()) return navigate("/login", {replace:true})
+    if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     return <>
     
     <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
@@ -15,7 +15,7 @@ const Profile = () => {
     <Nav />
     <div className="flex flex-col text-textcol-light dark:text-textcol-dark">
         <div className="first flex flex-col mb-16">
-            <div className="h-[40vh] mx-[5px] relative bg-[url(../../public/images/try.webp)] bg-cover bg-no-repeat">
+            <div className="h-[40vh] mx-[5px] relative bg-[url(/images/try.webp)] bg-cover bg-no-repeat">
                 <div className="absolute -bottom-24 rounded-full left-0 right-0 m-auto w-48 h-48 bg-red-300"></div>
             </div>
             <div className="name text-xl pt-32 m-auto text-center">

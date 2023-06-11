@@ -2,6 +2,11 @@ import { createSignal } from 'solid-js';
 export const [login, setLogin] = createSignal(false)
 export const [user, setUser] = createSignal(null)
 
+if(localStorage.getItem("login")){
+  setLogin(JSON.parse(localStorage.getItem("login")))
+}
+console.log(login());
+
 export function replaceFunction(url){
   window.location.replace(url);
 }
