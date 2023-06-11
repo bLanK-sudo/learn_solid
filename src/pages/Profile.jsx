@@ -3,12 +3,15 @@ import { A, useNavigate } from '@solidjs/router';
 import Nav from "../Components/Nav"
 import { Motion } from "@motionone/solid";
 import { login } from "../../public/js/store";
+import Menu from "../Components/Menu";
 
 const Profile = () => {
     const navigate = useNavigate()
-    //if(!login()) return navigate("/login", {replace:true})
+    if(!login()) return navigate("/login", {replace:true})
     return <>
+    
     <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
+    <Menu />
     <Nav />
     <div className="flex flex-col text-textcol-light dark:text-textcol-dark">
         <div className="first flex flex-col mb-16">

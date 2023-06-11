@@ -9,7 +9,7 @@ import { Timer, Time, TimerOptions } from 'timer-node';
 
 const App = () => {
   const navigate = useNavigate()
-  // if(!login()) return navigate("/login", {replace:true})
+  if(!login()) return navigate("/login", {replace:true})
 
 return (
   <>  

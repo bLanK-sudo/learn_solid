@@ -45,10 +45,11 @@ const Test = (id) => {
     const [completed, setCompleted] = createSignal(0)
     const [notCompleted, setNotCompleted] = createSignal(0)
     const [startTimer, setStartTimer] = createSignal(0)
+    const [currentQn, setCurrentQn] = createSignal(0)
     fetchData("http://localhost:5000/qnpaper", setqnId)
     fetchData("http://localhost:5000/qns", setQns)
     let count = 0
-    
+    let fullTime = Date.now()
     return <>
         
         
@@ -56,7 +57,7 @@ const Test = (id) => {
         <Show when={qnId()} fallback={<p>Loading.....</p>}>
             {start() &&
                 <div class="">
-                    <button class="fixed inset-0 w-screen m-auto h-screen bg-div-light dark:bg-div-dark z-10 text-xl" onClick={el => {showStart(false);document.getElementsByName(qnId()[0])[0].classList.add("border-2", "border-red-500", "dark:border-red-500")}}>START THE TEST</button>
+                    <button class="fixed inset-0 w-screen m-auto h-screen bg-div-light dark:bg-div-dark z-10 text-xl" onClick={el => { setCurrentQn(qnId()[0]); setStartTimer(Date.now()) ;showStart(false);document.getElementsByName(qnId()[0])[0].classList.add("border-2", "border-red-500", "dark:border-red-500")}}>START THE TEST</button>
                 </div>
             }
         </Show>
@@ -75,7 +76,7 @@ const Test = (id) => {
                             <For each={qn.ans}>{
                                 (ans, i) => {
                                     return <div class="flex gap-2 items-center">
-                                        <input type={qnType(qn.type)}  id={ans.id} value={ans.a} />
+                                        <input type={qnType(qn.type)}  id={ans.id} name={qn.id} value={ans.a} />
                                         <label for={ans.id}>{ans.a}</label>
                                     </div>
                                 }
@@ -131,6 +132,14 @@ const Test = (id) => {
                             (id, i) => {
                                 return <>
                                     <button class="qnBtn text-textcut-light dark:text-textcut-dark" name={id} onClick={el => {
+                                        if(timer[currentQn()]){
+                                            timer[currentQn()] += Date.now() - startTimer()
+                                        }else{
+                                            timer[currentQn()] = Date.now() - startTimer()
+                                        }
+                                        setStartTimer(Date.now())
+                                        console.log(timer);
+                                        setCurrentQn(id)
                                         Object.values(document.getElementsByClassName("qns")).forEach(el => {
                                             el.classList.add("hidden")
                                         })
@@ -147,7 +156,7 @@ const Test = (id) => {
                     </Show>
                 </Show>
             </div>
-            <button onClick={() => {setSubmit(true); console.log(selected);}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+            <button onClick={() => {fullTime = Date.now() - fullTime;setSubmit(true); console.log(selected);}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>
@@ -161,6 +170,7 @@ const Test = (id) => {
             <div className="flex flex-col gap-4">
             <p>Answered : {count}</p>
             <p>Not Answered : {qnId().length - count}</p>
+            <p>Total Time Taken in ms : {fullTime}</p>
             <button class="btn" onClick={() => {replaceFunction("/mock")}}>DONE</button>
             </div>
             </div> 

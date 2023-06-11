@@ -14,6 +14,7 @@ const Menu = () => {
                 <A href="/about" class={`nav-btn text-5xl w-[250px] text-center `}>About</A>
                 <A href="/profile" class={`nav-btn text-5xl w-[250px] text-center `}>Profile</A>
                 <A href="/donate" class={`nav-btn text-5xl w-[250px] text-center `}>Donate</A>
+                <A href="/" onClick={() => {setLogin(false)}} class='nav-btn'>Signout</A>
             </div>
         </>
     )

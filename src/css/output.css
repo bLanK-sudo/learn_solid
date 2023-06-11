@@ -1030,10 +1030,6 @@ input:focus, textarea:focus, select:focus {
   background-color: rgb(21 21 21 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\.\.\/public\/images\/try\.webp\)\] {
-  background-image: url(../public/images/try.webp);
-}
-
 .bg-\[url\(\.\.\/\.\.\/public\/images\/try\.webp\)\] {
   background-image: url(../../public/images/try.webp);
 }

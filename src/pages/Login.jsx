@@ -21,15 +21,16 @@ const Login = () => {
                 <div class="w-max m-auto flex flex-col justify-center items-center">
                 <button type="submit" onClick={async() => {
                     try{
-                        const response = await fetch("https://localhost:5000/login", {
+                        const response = await fetch("http://localhost:5000/login", {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({"email": document.getElementById("email").value, "password": document.getElementById("pwd").value})
+                           "Content-Type": "application/json"
+                        }
                     });
                     const data = await response.json();
+                    set_cookie("user", data.token, 1);
                     if(data) setLogin(true); navigate("/home", {replace:true});
+                    
 
                     }catch(err){
                         console.log(err);
