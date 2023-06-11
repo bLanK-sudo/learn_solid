@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-import './public/css/index.css';
+import '../public/css/index.css';
 import App from './pages/App';
 import Mock from './pages/Mock.jsx';
 import Test from './pages/Test.jsx'
