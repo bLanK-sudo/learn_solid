@@ -28,7 +28,6 @@ const Login = () => {
                         }
                     });
                     const data = await response.json();
-                    set_cookie("user", data.token, 1);
                     if(data) setLogin(true); navigate("/home", {replace:true});
                     
 
