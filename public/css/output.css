@@ -790,6 +790,10 @@ input:focus, textarea:focus, select:focus {
   display: inline-block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -870,6 +874,10 @@ input:focus, textarea:focus, select:focus {
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-\[300px\] {
+  max-width: 300px;
 }
 
 .cursor-pointer {
@@ -1174,6 +1182,10 @@ input:focus, textarea:focus, select:focus {
   font-weight: 100;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1197,6 +1209,11 @@ input:focus, textarea:focus, select:focus {
 .text-textcut-light {
   --tw-text-opacity: 1;
   color: rgb(10 9 8 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .underline {

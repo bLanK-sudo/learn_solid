@@ -1,14 +1,14 @@
 import { Motion } from "@motionone/solid";
 import Nav from '../Components/Nav'
 import Menu from '../Components/Menu'
-import {login, user} from '../../public../../public/js/store.js'
+import {login, setError, user} from '../../public../../public/js/store.js'
 import { createEffect } from 'solid-js';
 import { A, useNavigate } from '@solidjs/router';
 import { replaceFunction } from "../../public/js/store.js";
 
 const App = () => {
   const navigate = useNavigate()
-  if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
+  if(!login()) {setError("You are not logged in!!"); return navigate("/login", {replace:true})}
 
 return (
   <>  

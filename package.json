@@ -20,6 +20,7 @@
   "dependencies": {
     "@motionone/solid": "^10.16.2",
     "@solidjs/router": "^0.8.2",
+    "jwt-decode": "^3.1.2",
     "motion": "^10.16.2",
     "solid-js": "^1.6.10"
   }

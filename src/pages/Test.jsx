@@ -154,7 +154,11 @@ const Test = (id) => {
                     </Show>
                 </Show>
             </div>
-            <button onClick={() => {fullTime = Date.now() - fullTime;setSubmit(true); console.log("selected array: ",selected);console.log("timer: ",timer)}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+            <button onClick={() => {fullTime = Date.now() - fullTime;setSubmit(true); if(timer[currentQn()]){
+                                            timer[currentQn()] += Date.now() - startTimer()
+                                        }else{
+                                            timer[currentQn()] = Date.now() - startTimer()
+                                        }}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>
@@ -171,7 +175,9 @@ const Test = (id) => {
             <button class="btn" onClick={() => {navigate("/mock")}}>DONE</button>
             </div>
             </div> 
-        }     
+        }
+        { console.log("selected array: ",selected)}
+        {console.log("timer: ",timer)}
         
     </>
 
