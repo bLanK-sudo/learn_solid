@@ -12,6 +12,8 @@ import Upcoming from './pages/Upcoming';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
+import About from './pages/About';
+import Feedback from './pages/Feedback';
 
 
 
@@ -36,11 +38,14 @@ render(
       <Route path="/mock" component={Mock} />
       <Route path="/mock/test/:id" component={Test} />
       <Route path="/profile" component={Profile} />
+      <Route path="/about" component={About} />
       <Route path="/report" component={Report} />
+      <Route path="/feedback" component={Feedback} />
       <Route path="/coming-soon" component={Upcoming} />
       <Route path="*" component={PageNotFound} />
     </Routes>
   </Router>
+  
   ), 
   root
   );

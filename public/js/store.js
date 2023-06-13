@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { createSignal } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
 export const [login, setLogin] = createSignal(false)
 export const [user, setUser] = createSignal(null)
 export const [error, setError] = createSignal("")
@@ -9,11 +9,7 @@ if(localStorage.getItem("login")){
   if(localStorage.getItem("token")){localStorage.setItem("login", "true"); setLogin(true)}else {localStorage.setItem("login", "false"); setLogin(false)}
   
 }
-console.log(login());
 
-export function replaceFunction(url){
-  window.location.replace(url);
-}
 
 
 export const fetchData = async (url, set) => {
@@ -27,17 +23,23 @@ if(localStorage.getItem("token")){
 }
 
 
-// const new_data = await fetch("http://abulaman.pythonanywhere.com/test/start_test/", {
-//   method: "POST", // or 'PUT'
-//   headers: {
-//     "Content-Type": "application/json",
-//     "Authorization": `Bearer ${localStorage.getItem("token")}`
-//   },
-//   body:JSON.stringify({qp_id : 1})
+createEffect(async() => {
+  if(localStorage.getItem("token")){
+    const current_user = await fetch("http://abulaman.pythonanywhere.com/profile/", {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    }
+  })
+    if(current_user){
+      const data = await current_user.json()
+      setUser(data)
+    }
+  } 
+  
+  console.log(user());
+})
 
-// })
-
-// console.log(new_data.json());
 
 
 export const postJSON = async(url,data) => {
@@ -57,7 +59,4 @@ export const postJSON = async(url,data) => {
     }
   }
   
-
-
-fetchData("http://localhost:5000/users", setUser)
 

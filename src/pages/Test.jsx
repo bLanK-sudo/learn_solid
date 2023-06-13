@@ -2,7 +2,6 @@ import { For, createEffect, createSignal } from "solid-js"
 import { useBeforeLeave, useNavigate, useParams } from "@solidjs/router"
 import {fetchData, postJSON } from "../../public/js/store"
 import Nav from '../Components/Nav'
-import { replaceFunction } from "../../public/js/store"
 import { login } from "../../public/js/store"
 
 

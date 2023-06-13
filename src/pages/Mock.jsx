@@ -18,8 +18,23 @@ const Mock = () => {
   <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
       <Menu />
       <Nav />
-      <div class="p-8 m-[5px] mt-0 h-[300px] text-textcol-light dark:text-textcol-dark bg-div-light dark:bg-div-dark border-2 border-bordercol-light dark:border-bordercol-dark rounded-bl-xl rounded-br-xl border-t-0  grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Show when={user()} fallback={<p>Loading.....</p>}>
+      <div class="p-8 m-[5px] mt-0 h-[300px] w-full text-textcol-light dark:text-textcol-dark bg-div-light dark:bg-div-dark border-2 border-bordercol-light dark:border-bordercol-dark rounded-bl-xl rounded-br-xl border-t-0 ">
+          <Show when={user()} fallback={
+                <div class="animate-pulse w-full flex space-x-4">
+                  <div class="flex-1 space-y-6 py-1">
+                    <div class="h-8 bg-slate-700 rounded-full"></div>
+                    <div class="space-y-3">
+                      <div class="grid grid-cols-3 gap-4">
+                        <div class="h-8 bg-slate-700 rounded-full col-span-2"></div>
+                        <div class="h-8 bg-slate-700 rounded-full col-span-1"></div>
+                      </div>
+                      <div class="grid grid-cols-4 gap-4">
+                        <div class="h-8 bg-slate-700 rounded-full col-span-1"></div>
+                        <div class="h-8 bg-slate-700 rounded-full col-span-3"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>}>
               <Switch fallback={<p>Loading ...</p>}>
                   <Match when={subjectsPicked()==null}>
                       <p class="text-lg">You have not picked any subjects yet. Go to your profile and pick the
