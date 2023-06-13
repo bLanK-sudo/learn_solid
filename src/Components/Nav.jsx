@@ -2,7 +2,7 @@ import { createEffect } from 'solid-js';
 import {animate} from 'motion'
 import { A, useNavigate } from '@solidjs/router';
 import { setLogin } from '../../public/js/store';
-import { setUser } from '../../dist/js/store';
+import { setUser } from '../../public/js/store';
 
 export default () => {
     const navigate = useNavigate()
