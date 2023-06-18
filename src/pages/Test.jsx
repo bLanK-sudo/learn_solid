@@ -79,6 +79,7 @@ const Test = (id) => {
         if(!response.ok) {return <><div><p>Something went wrong with the server </p> <p>{response.status}</p> </div></>}
         const data = await response.json()
         if(data) {
+            setResult(data)
             console.log(data);
         }
     }
@@ -253,6 +254,9 @@ const Test = (id) => {
             <p>Answered : {count}</p>
             <p>Not Answered : {qnId().length - count}</p>
             <p>Total Time Taken in ms : {fullTime}</p>
+            <Show when={result()} fallback={<p>Your scores are being calculated....</p>}>
+                <p>Score : {result().score}</p>
+            </Show>
             <button class="btn" onClick={() => {navigate("/mock")}}>DONE</button>
             </div>
             </div> 
