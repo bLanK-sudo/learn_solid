@@ -2,7 +2,7 @@ import { Motion } from "@motionone/solid";
 import {error, setError, setLogin} from "../../public/js/store.js";
 import { useNavigate } from "@solidjs/router";
 import { A } from "@solidjs/router";
-import { createEffect } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 
 
@@ -11,9 +11,9 @@ const Login = () => {
     const navigate = useNavigate();
     createEffect(() => {
         error();
-        setTimeout(() => {setError("");}, 3000)
+        setTimeout(() => {setError(null);}, 3000)
     })
-
+    
 
     return <>
     <Motion animate={{opacity:[0, 1]}} transition={{ duration: .7, easing: "ease-in-out" }}>
@@ -21,14 +21,14 @@ const Login = () => {
         <div class="flex flex-col items-center justify-center min-h-screen">
             <div>
                 <div class="flex flex-col gap-4 p-4">
-                    <label for="name">Username</label>
-                    <input type="text" name="name" id="name" required/>           
+                    <label for="name">Email</label>
+                    <input type="email" name="email" id="email" required/>           
                     <label htmlFor="pwd">Password</label>
                     <input type="password" name="pwd" id="pwd" required/>
                 </div>
                 <div class="m-auto flex flex-col justify-center items-center">
                 <button ref={loginBtn} type="submit" onClick={async() => {
-                    console.log(document.getElementById("name").value,  document.getElementById("pwd").value);
+                    console.log(document.getElementById("email").value,  document.getElementById("pwd").value);
                     try{
                         loginBtn.innerHTML = "<div class='w-8 h-8 animate-spin border-t-2 border-r-2 border-t-textcol-light border-r-textcol-light rounded-full dark:border-t-textcol-dark dark:border-r-textcol-dark'></div> Logging In...";
                         const response = await fetch("https://abulaman.pythonanywhere.com/api/token/", {
@@ -37,14 +37,14 @@ const Login = () => {
                            "Content-Type": "application/json",
                            
                         },
-                        body: JSON.stringify({username: document.getElementById("name").value, password: document.getElementById("pwd").value})
+                        body: JSON.stringify({email: document.getElementById("email").value, password: document.getElementById("pwd").value})
                     });
                     const data = await response.json();
                     if(!response.ok) {
                         loginBtn.innerHTML = "Log In";
                         setError(data.detail)
                     }else{
-                        if(data) setLogin(true); localStorage.setItem("token", data.access); navigate("/home", {replace:true});
+                        if(data) setLogin(true); localStorage.setItem("token", data.access); localStorage.setItem("login", "true"); navigate("/home", {replace:true});
                         console.log(data);
                     }
                     
@@ -60,7 +60,16 @@ const Login = () => {
                 </div>
                 
             </div>
-            <p class="text-xs md:text-lg xl:text-xl text-red-500 font-semibold text-center"> {error()} </p>
+            <div class="flex justify-center items-center flex-wrap flex-col">
+                {(typeof error() == "string")?<p class="text-xs lg:text-base border-2 border-red-500 text-red-500 font-semibold px-4"> {error()} </p>
+                :
+                <For each={error()}>{
+                    (err, i) => {
+                        return <p class="text-xl text-red-500 font-semibold"> {err} </p>
+                    }
+                }</For>
+                }
+            </div>
         </div>
     </Motion>
     </>

@@ -847,6 +847,10 @@ input:focus, textarea:focus, select:focus {
   height: 60vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-max {
   height: -moz-max-content;
   height: max-content;
@@ -868,6 +872,10 @@ input:focus, textarea:focus, select:focus {
   min-height: 100vh;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .w-32 {
   width: 8rem;
 }
@@ -882,6 +890,10 @@ input:focus, textarea:focus, select:focus {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-\[250px\] {
@@ -899,6 +911,23 @@ input:focus, textarea:focus, select:focus {
 
 .w-screen {
   width: 100vw;
+}
+
+.min-w-\[16\] {
+  min-width: 16;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.max-w-\[1920px\] {
+  max-width: 1920px;
+}
+
+.max-w-\[350px\] {
+  max-width: 350px;
 }
 
 .max-w-\[600px\] {
@@ -1005,14 +1034,6 @@ input:focus, textarea:focus, select:focus {
   gap: 5px;
 }
 
-.gap-\[1px\] {
-  gap: 1px;
-}
-
-.gap-\[2px\] {
-  gap: 2px;
-}
-
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -1064,6 +1085,10 @@ input:focus, textarea:focus, select:focus {
   border-bottom-width: 0px;
 }
 
+.border-l-2 {
+  border-left-width: 2px;
+}
+
 .border-r-2 {
   border-right-width: 2px;
 }
@@ -1105,6 +1130,11 @@ input:focus, textarea:focus, select:focus {
   border-top-color: rgb(21 21 21 / var(--tw-border-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-div-light {
   --tw-bg-opacity: 1;
   background-color: rgb(167 176 202 / var(--tw-bg-opacity));
@@ -1120,11 +1150,6 @@ input:focus, textarea:focus, select:focus {
   background-color: rgb(213 220 249 / var(--tw-bg-opacity));
 }
 
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
@@ -1133,6 +1158,10 @@ input:focus, textarea:focus, select:focus {
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg-\[url\(\/images\/try\.webp\)\] {
@@ -1183,6 +1212,10 @@ input:focus, textarea:focus, select:focus {
   padding-bottom: 0.25rem;
 }
 
+.pb-28 {
+  padding-bottom: 7rem;
+}
+
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1201,14 +1234,6 @@ input:focus, textarea:focus, select:focus {
 
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
-.pb-28 {
-  padding-bottom: 7rem;
 }
 
 .text-center {
@@ -1499,11 +1524,6 @@ input:focus, textarea:focus, select:focus {
     line-height: 1;
   }
 
-  .md\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -1517,6 +1537,10 @@ input:focus, textarea:focus, select:focus {
 
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-3 {
@@ -1538,6 +1562,11 @@ input:focus, textarea:focus, select:focus {
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .lg\:text-lg {

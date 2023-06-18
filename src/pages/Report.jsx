@@ -14,7 +14,7 @@ const Report = () => {
             <div class="min-h-[60vh] flex flex-col justify-center items-center p-2 lg:p-8 xl:p-16">
             <h3 className="text-base lg:text-lg xl:text-xl p-4 text-center font-poppins">We are sorry that u experienced a bug :(</h3>
 
-            <form action="/report-bug" method="POST" className="flex p-8 w-max h-max gap-4 flex-col drop-shadow-xl">
+            <form action="/report-bug" method="POST" className="flex p-8  h-max gap-4 flex-col drop-shadow-xl">
                 <div className="title flex flex-col md:flex-row gap-4">
                     <label class="w-32" htmlFor="report-title">TITLE</label>
                     <input id="report-title" type="text" required/>

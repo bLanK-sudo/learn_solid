@@ -7,10 +7,10 @@ import { login } from "../../public/js/store"
 
 
 const qnType = (e) => {
-    if(e == "mcq") return "radio"
-    else if(e == "msq") return "checkbox"
-    else if(e == "short") return "text"
-    else if(e == "numeric") return "number"
+    if(e == "SCQ") return "radio"
+    else if(e == "MCQ") return "checkbox"
+    else if(e == "Short" || e == "Text") return "text"
+    else if(e == "Numeric") return "number"
     else return "textarea"
 }
 
@@ -18,11 +18,43 @@ const qnType = (e) => {
 
 
 const Test = (id) => {
+    const [test, setTest] = createSignal(null)
+    const [qnId, setqnId] = createSignal([])
+    const [result, setResult] = createSignal(null)
+    let qn = []
+    const fetchTest = async () => {
+        const response = await fetch("https://abulaman.pythonanywhere.com/test/start_test/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        body: JSON.stringify({qp_id: 1})
+        });
+        const data = await response.json();
+        if(!response.ok) {
+            navigate("/mock", {replace:true})
+        }else{
+            if(data) {
+                setTest(data)
+                console.log(data);
+            }
+        }
+        for (let i = 0; i < test().test_questions.length; i++) {
+            qn.push(test().test_questions[i].id)
+        }
+        setqnId(qn)
+      }
+    fetchTest()
 
-    const params = useParams();
+
+
+
+    
+
     const navigate = useNavigate()
 
-    //if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
+    if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     
     useBeforeLeave(e => {
         e.preventDefault()
@@ -35,8 +67,25 @@ const Test = (id) => {
     const selected= {}
     const timer = {}
     let mainQnDiv;
-    const [qnId, setqnId] = createSignal([])
-    const [qns, setQns] = createSignal([])
+    const fetchAns = async () => {
+        const response = await fetch("https://abulaman.pythonanywhere.com/test/submit_test/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify({id : test().id, test_questions: selected})
+        })
+        if(!response.ok) {return <><div><p>Something went wrong with the server </p> <p>{response.status}</p> </div></>}
+        const data = await response.json()
+        if(data) {
+            console.log(data);
+        }
+    }
+    // for(let i = 0; i < 100; i++){
+    //     selected[i] = []
+    // }
+    
     const [start, showStart] = createSignal(true)
     const [all, setAll] = createSignal(false)
     const [submit, setSubmit] = createSignal(false)
@@ -44,50 +93,79 @@ const Test = (id) => {
     const [notCompleted, setNotCompleted] = createSignal(0)
     const [startTimer, setStartTimer] = createSignal(0)
     const [currentQn, setCurrentQn] = createSignal(0)
-    fetchData("http://localhost:5000/qnpaper", setqnId)
-    fetchData("http://localhost:5000/qns", setQns)
+
+    // fetchData("http://localhost:5000/qnpaper", setqnId)
+    // fetchData("http://localhost:5000/qns", setQns)
+    
     let count = 0
     let fullTime = Date.now()
     return <>
         
         
-
-        <Show when={qnId()} fallback={<p>Loading.....</p>}>
-            {start() &&
-                <div class="">
-                    <button class="fixed inset-0 w-screen m-auto h-screen bg-div-light dark:bg-div-dark z-10 text-xl" onClick={el => { setCurrentQn(qnId()[0]); setStartTimer(Date.now()) ;showStart(false);document.getElementsByName(qnId()[0])[0].classList.add("border-2", "border-red-500", "dark:border-red-500")}}>START THE TEST</button>
-                </div>
-            }
-        </Show>
         <Nav />
-        <h3 class="text-center text-3xl font-bold p-4">{params.id.toUpperCase()}</h3>
+        {start() &&
+        <div class="fixed inset-0 w-screen m-auto h-screen bg-div-light dark:bg-div-dark z-10 text-xl">
+            <div class="flex flex-col justify-center items-center h-full">
+                <p>This is just a page before ur test. Where you wait until ur test data loads</p>
+                <div class="">
+                    <Show when={test()} fallback={<p>Loading.....</p>}>
+                        
+                            <div class="">
+                                <button class="btn" onClick={el => { setCurrentQn(qnId()[0]); setStartTimer(Date.now()) ;showStart(false);document.getElementsByName(qnId()[0])[0].classList.add("border-2", "border-red-500", "dark:border-red-500")}}>START THE TEST</button>
+                            </div>
+                        
+                    </Show>
+                </div>
+            </div>
+        </div>
+        }
         <div className="grid grid-rows-3 grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 p-2 lg:p-8 xl:p-16 min-h-[80vh]">
         <div className="row-span-2 lg:col-span-2">
-        <Show when={qns()}>
-            <For each={qns()}>{
+        <Show when={test()} fallback={<>What the hell is happening</>}>
+            <For each={test().test_questions}>{
                 (qn, i) => {
-                    return <> <div ref={mainQnDiv} className={`qns qns${qn.id} flex gap-4 flex-col ${(i() != 0)? "hidden":""}`}>
+                    return <>
+                    
+                    <div ref={mainQnDiv} className={`qns qns${qn.id} flex gap-4 flex-col ${(i() != 0)? "hidden":""}`}>
+                    <div className="">
+                        MARKS : {qn.question.marks}
+                    </div>
                         <div class="qn text-xl xl:text-2xl">
-                            {`${i()+1}) ${qn.q}`}
+                            {`${i()+1}) ${qn.question.text}`}
                         </div>
                         <div className="ans flex flex-col text-lg xl:text-xl pl-4">
-                            <For each={qn.ans}>{
+                            {qn.question.type == "Numeric" && <input type="number" onChange={(el) => {document.getElementById("save" + qn.id).classList.remove("bg-green-500","dark:text-black");document.getElementById("save" + qn.id).innerText="SAVE";document.getElementsByName(qn.id)[0].classList.add("bg-red-500", "border-bordercol-light", "dark:border-bordercol-dark","dark:text-black","border-none"); console.log("ur reverting")}} name={"q" + qn.id} id={qn.question.id} />}
+                            {qn.question.type == "Text" && <input type="text"      onChange={(el) => {document.getElementById("save" + qn.id).classList.remove("bg-green-500","dark:text-black");document.getElementById("save" + qn.id).innerText="SAVE";document.getElementsByName(qn.id)[0].classList.add("bg-red-500", "border-bordercol-light", "dark:border-bordercol-dark","dark:text-black","border-none"); console.log("ur reverting")}} name={"q" + qn.id} id={qn.question.id} />}
+                            {qn.question.type == "SCQ" && 
+                            <For each={qn.choices}>{
                                 (ans, i) => {
-                                    return <div class="flex gap-2 items-center">
-                                        <input type={qnType(qn.type)}  id={ans.id} name={"q" + qn.id} value={ans.a} />
-                                        <label for={ans.id}>{ans.a}</label>
+                                    return <div class="flex gap-2 items-center min-w-[16]">
+                                        <input onChange={(el) => {document.getElementById("save" + qn.id).classList.remove("bg-green-500","dark:text-black");document.getElementById("save" + qn.id).innerText="SAVE";document.getElementsByName(qn.id)[0].classList.add("bg-red-500", "border-bordercol-light", "dark:border-bordercol-dark","dark:text-black","border-none")}} type={qnType(qn.type)}  id={ans.id} name={"q" + qn.id} value={ans.id} />
+                                        <label class="w-16 min-w-max cursor-pointer" for={ans.id}>{ans.choice}</label>
                                     </div>
                                 }
                             }</For>
+                            }
+                            {qn.question.type == "MCQ" && 
+                            <For each={qn.choices}>{
+                                (ans, i) => {
+                                    return <div class="flex gap-2 items-center">
+                                        <input onChange={(el) => {document.getElementById("save" + qn.id).classList.remove("bg-green-500","dark:text-black");document.getElementById("save" + qn.id).innerText="SAVE";document.getElementsByName(qn.id)[0].classList.add("bg-red-500", "border-bordercol-light", "dark:border-bordercol-dark","dark:text-black","border-none")}} type={qnType(qn.type)}  id={"scq"+ ans.id} name={"q" + qn.id} value={ans.id} />
+                                        <label class="w-16 min-w-max cursor-pointer" for={"scq"+ ans.id}>{ans.choice}</label>
+                                    </div>
+                                }
+                            }</For>
+                            }
                         </div>
-                        <button onClick={e => {
+                        <button id={"save" + qn.id} onClick={e => {
                             let ans = e.target.previousSibling.children
-                            let ansArr = []
+                            let ansArr;
                             
-                            if(qn.type == "text" || qn.type == "numeric") ansArr.push(ans[0].childNodes[0].value)
+                            if(qn.type == "Text" || qn.type == "Numeric") {ansArr = ""; ansArr = ans[0].value}
                             else{
+                            ansArr = [];
                             Object.values(ans).forEach(el => {
-                                if(el.childNodes[0].checked) ansArr.push(el.childNodes[0].id)
+                                if(el.childNodes[0].checked) {console.log(el.childNodes[0]);ansArr.push(el.childNodes[0].value)}
                             })}
                             selected[qn.id] = ansArr
                             let flag = true
@@ -95,12 +173,12 @@ const Test = (id) => {
                                 if(!selected[el] || (selected[el] && selected[el].length <= 0)) flag = false
                             })
                             setAll(flag)
-                            if((qn.type =="mcq" || qn.type=="msq") && selected[qn.id].length > 0){
+                            if((qn.type =="MCQ" || qn.type=="SCQ") && selected[qn.id].length > 0){
                                 e.target.classList.add("bg-green-500", "dark:text-black")
                                 e.target.innerText = "SAVED"
                                 document.getElementsByName(qn.id)[0].classList.remove("border-red-500","dark:border-red-500", "bg-red-500")
                                 document.getElementsByName(qn.id)[0].classList.add("bg-green-500", "border-bordercol-light", "dark:border-bordercol-dark","dark:text-black", "border-none")
-                            }else if((qn.type == "text" || qn.type == "numeric") && ans[0].childNodes[0].value.length > 0){
+                            }else if((qn.type == "Text" || qn.type == "Numeric") && ans[0].value.length > 0){
                                     e.target.classList.add("bg-green-500","dark:text-black")
                                     e.target.innerText = "SAVED"
                                     document.getElementsByName(qn.id)[0].classList.remove("border-red-500","dark:border-red-500", "bg-red-500")
@@ -125,7 +203,7 @@ const Test = (id) => {
         <div class="row-span-1 lg:col-span-1 p-2 flex flex-col gap-16 ">
             <div class="flex gap-4 w-max flex-wrap">
                 <Show when={qnId()} fallback={<><p>Hello World</p></>}>
-                    <Show when={qns()}>
+                    <Show when={test()}>
                         <For each={qnId()}>{
                             (id, i) => {
                                 return <>
@@ -146,6 +224,7 @@ const Test = (id) => {
                                         }else if(selected[id].length == 0 ){
                                             el.target.classList.add("border-red-500","dark:border-red-500")
                                         }
+                                        console.log(selected);
                                     }}>{i() + 1}</button>
                                     </>
                             }
@@ -157,7 +236,10 @@ const Test = (id) => {
                                             timer[currentQn()] += Date.now() - startTimer()
                                         }else{
                                             timer[currentQn()] = Date.now() - startTimer()
-                                        }}} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
+                                        };
+                                        fetchAns()
+                                        console.log(selected);
+                                        }} class={`btn rounded-none cursor-pointer border-none text-black ${all()? "bg-green-500" : "bg-red-500"}`}>SUBMIT</button>
         </div>
         
         </div>
@@ -181,7 +263,7 @@ const Test = (id) => {
     </>
 
 
-    }
+}
 
 
 

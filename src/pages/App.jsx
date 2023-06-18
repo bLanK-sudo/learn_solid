@@ -1,14 +1,16 @@
 import { Motion } from "@motionone/solid";
 import Nav from '../Components/Nav'
 import Menu from '../Components/Menu'
-import {login, setError, user} from '../../public../../public/js/store.js'
-import { createEffect } from 'solid-js';
+import {fetchUser, login, setError, user} from '../../public/js/store.js'
+import { createEffect, createSignal } from 'solid-js';
 import { A, useNavigate } from '@solidjs/router';
 
+
 const App = () => {
+  
+  fetchUser()
   const navigate = useNavigate()
   if(!login()) {setError("You are not logged in!!"); return navigate("/login", {replace:true})}
-
 return (
   <>  
   <Menu />
@@ -18,7 +20,7 @@ return (
   <div class='text-textcol-light dark:text-textcol-dark'>
   <div class="p-16 m-[5px] mt-0 h-max bg-div-light dark:bg-div-dark border-2 border-bordercol-light dark:border-bordercol-dark rounded-bl-xl rounded-br-xl border-t-0">
     
-  <p class="font-thin text-3xl md:text-5xl xl:text-7xl no-underline overflow-hidden h-max p-2"> Hello <Show when={user()} fallback={<span class="h-8 w-48 inline-block bg-slate-700 rounded-full animate-pulse"></span>}> <A href='/profile'  class="user cursor-pointer transition-color duration-500 hover:line-through  hover:text-textcol-dark hover:bg-textcol-light hover:px-4 dark:hover:text-textcut-light dark:hover:bg-textcol-dark">{(user())? user().user.username : <></>}</A> </Show>, nice to
+  <p class="font-thin text-3xl md:text-5xl xl:text-7xl no-underline overflow-hidden h-max p-2"> Hello <Show when={user()} fallback={<span class="h-8 w-48 inline-block bg-slate-700 rounded-full animate-pulse"></span>}> <A href='/profile'  class="user cursor-pointer transition-color duration-500 hover:line-through  hover:text-textcol-dark hover:bg-textcol-light hover:px-4 dark:hover:text-textcut-light dark:hover:bg-textcol-dark">{(user())? user().username : <></>}</A> </Show>, nice to
         see you! </p>
       <div class="flex gap-6 pt-4">
         <A href="/mock" class="btn text-[10px] sm:text-xs md:text-xl w-max">Attempt mock</A>
@@ -28,7 +30,7 @@ return (
 
   </div>
   <div class="flex items-start m-2 gap-8  mb-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 w-screen flex-wrap gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 w-full flex-wrap gap-4">
       <div class='bg-div-light dark:bg-div-dark rounded-bl-xl rounded-br-xl'>
         <h3 class='topic'>About</h3>
         <div class="p-4 flex flex-col gap-4">
