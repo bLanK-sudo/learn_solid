@@ -7,7 +7,7 @@ export const [error, setError] = createSignal(null)
 
 export const fetchUser = async () => {
   console.log("fetching user");
-  const current_user = await fetch("http://abulaman.pythonanywhere.com/profile/", {
+  const current_user = await fetch("https://abulaman.pythonanywhere.com/profile/", {
   headers: {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${localStorage.getItem("token")}`
