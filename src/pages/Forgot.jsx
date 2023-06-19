@@ -85,13 +85,16 @@ const Forgot = () => {
                                     otp(false);
                                 }
                                 }catch(err){
+                                    el.target.innerHTML= "Submit"
                                     console.log(err);
                                     setError("Something went wrong. Please try again. If it keeps continuing, please contact us.");
                                 }
                         }
                     }>SUBMIT</button>
                 </div>
+                <p class="text-center text-red-500 text-xs underline">{error()}</p>
             </div> 
+            
             }
 
             {verifyOTP() &&

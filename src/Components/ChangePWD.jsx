@@ -38,7 +38,7 @@ const ChangePWD = () => {
                 }
             } class="btn justify-center items-center flex gap-2">Submit</button>
             </div>
-            <p>{error()}</p>
+            <p class="text-center text-red-500 text-xs underline">{error()}</p>
         </div>
     )
 }
