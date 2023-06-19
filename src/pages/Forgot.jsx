@@ -59,7 +59,7 @@ const Forgot = () => {
                 
             </div>
             {otp() &&
-            <div className="w-full fixed inset-0 h-screen bg-slate-800 flex justify-center items-center font-semibold font-montserrat">
+            <div className="w-full fixed inset-0 h-screen bg-slate-800 flex flex-col justify-center items-center font-semibold font-montserrat">
                 <div class="w-max flex flex-col text-start gap-2">
                     <div class="flex flex-col">
                     <label htmlFor="otp" class="text-start">Enter your OTP </label>
