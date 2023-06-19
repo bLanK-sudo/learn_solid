@@ -27,35 +27,36 @@ const Login = () => {
                     <input type="password" name="pwd" id="pwd" required/>
                 </div>
                 <div class="m-auto flex flex-col justify-center items-center">
-                <button ref={loginBtn} type="submit" onClick={async() => {
-                    console.log(document.getElementById("email").value,  document.getElementById("pwd").value);
-                    try{
-                        loginBtn.innerHTML = "<div class='w-8 h-8 animate-spin border-t-2 border-r-2 border-t-textcol-light border-r-textcol-light rounded-full dark:border-t-textcol-dark dark:border-r-textcol-dark'></div> Logging In...";
-                        const response = await fetch("https://abulaman.pythonanywhere.com/api/token/", {
-                        method: "POST",
-                        headers: {
-                           "Content-Type": "application/json",
-                           
-                        },
-                        body: JSON.stringify({email: document.getElementById("email").value, password: document.getElementById("pwd").value})
-                    });
-                    const data = await response.json();
-                    if(!response.ok) {
-                        loginBtn.innerHTML = "Log In";
-                        setError(data.detail)
-                    }else{
-                        if(data) setLogin(true); localStorage.setItem("token", data.access); localStorage.setItem("login", "true"); navigate("/home", {replace:true});
-                        console.log(data);
-                    }
-                    
+                    <A class="text-start text-blue-700 underline w-full p-4" href="/forgot_pwd">Forgot Password?</A>
+                    <button ref={loginBtn} type="submit" onClick={async() => {
+                        console.log(document.getElementById("email").value,  document.getElementById("pwd").value);
+                        try{
+                            loginBtn.innerHTML = "<div class='w-8 h-8 animate-spin border-t-2 border-r-2 border-t-textcol-light border-r-textcol-light rounded-full dark:border-t-textcol-dark dark:border-r-textcol-dark'></div> Logging In...";
+                            const response = await fetch("https://abulaman.pythonanywhere.com/api/token/", {
+                            method: "POST",
+                            headers: {
+                            "Content-Type": "application/json",
+                            
+                            },
+                            body: JSON.stringify({email: document.getElementById("email").value, password: document.getElementById("pwd").value})
+                        });
+                        const data = await response.json();
+                        if(!response.ok) {
+                            loginBtn.innerHTML = "Log In";
+                            setError(data.detail)
+                        }else{
+                            if(data) setLogin(true); localStorage.setItem("token", data.access); localStorage.setItem("login", "true"); navigate("/home", {replace:true});
+                            console.log(data);
+                        }
+                        
 
-                    }catch(err){
-                        console.log(err);
-                    }
-                    
+                        }catch(err){
+                            console.log(err);
+                        }
+                        
 
-                }} className="font-poppins font-bold w-56 btn m-auto flex gap-2 justify-center items-center">Log In</button>
-                <p class="p-4">Don't have an account? <A href="/signup" class="underline px-2 text-bordercol-light dark:text-bordercol-dark">Sign Up</A></p>
+                    }} className="font-poppins font-bold w-56 btn m-auto flex gap-2 justify-center items-center">Log In</button>
+                    <p class="p-4">Don't have an account? <A href="/signup" class="underline px-2 text-bordercol-light dark:text-bordercol-dark">Sign Up</A></p>
                 
                 </div>
                 

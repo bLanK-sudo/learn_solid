@@ -740,6 +740,10 @@ input:focus, textarea:focus, select:focus {
   z-index: 24;
 }
 
+.z-\[5\] {
+  z-index: 5;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -793,6 +797,11 @@ input:focus, textarea:focus, select:focus {
 .my-0 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mb-16 {
@@ -1080,6 +1089,10 @@ input:focus, textarea:focus, select:focus {
   border-width: 2px;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-y-0 {
   border-top-width: 0px;
   border-bottom-width: 0px;
@@ -1160,8 +1173,9 @@ input:focus, textarea:focus, select:focus {
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
-.bg-transparent {
-  background-color: transparent;
+.bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\/images\/try\.webp\)\] {
@@ -1328,6 +1342,11 @@ input:focus, textarea:focus, select:focus {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .text-blue-950 {

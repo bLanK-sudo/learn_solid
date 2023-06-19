@@ -21,6 +21,14 @@ const Test = (id) => {
     const [test, setTest] = createSignal(null)
     const [qnId, setqnId] = createSignal([])
     const [result, setResult] = createSignal(null)
+    const [submit, setSubmit] = createSignal(false)
+    const [start, showStart] = createSignal(true)
+    const [all, setAll] = createSignal(false)
+    const [completed, setCompleted] = createSignal(0)
+    const [notCompleted, setNotCompleted] = createSignal(0)
+    const [startTimer, setStartTimer] = createSignal(0)
+    const [currentQn, setCurrentQn] = createSignal(0)
+
     let qn = []
     const fetchTest = async () => {
         const response = await fetch("https://abulaman.pythonanywhere.com/test/start_test/", {
@@ -56,6 +64,7 @@ const Test = (id) => {
 
     if(!login()) {alert("You are not logged in!!"); return navigate("/login", {replace:true})}
     
+    
     useBeforeLeave(e => {
         e.preventDefault()
         setTimeout(() => {
@@ -87,13 +96,7 @@ const Test = (id) => {
     //     selected[i] = []
     // }
     
-    const [start, showStart] = createSignal(true)
-    const [all, setAll] = createSignal(false)
-    const [submit, setSubmit] = createSignal(false)
-    const [completed, setCompleted] = createSignal(0)
-    const [notCompleted, setNotCompleted] = createSignal(0)
-    const [startTimer, setStartTimer] = createSignal(0)
-    const [currentQn, setCurrentQn] = createSignal(0)
+    
 
     // fetchData("http://localhost:5000/qnpaper", setqnId)
     // fetchData("http://localhost:5000/qns", setQns)

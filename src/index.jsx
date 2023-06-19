@@ -14,6 +14,7 @@ import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import About from './pages/About';
 import Feedback from './pages/Feedback';
+import Forgot from './pages/Forgot';
 
 
 
@@ -33,6 +34,7 @@ render(
     <Routes>
       <Route path="/" component={Landing} />
       <Route path="/login" component={Login} />
+      <Route path="/forgot_pwd" component={Forgot} />
       <Route path="/signup" component={Signup} />
       <Route path="/home" component={App} />
       <Route path="/mock" component={Mock} />
