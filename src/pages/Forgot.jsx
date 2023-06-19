@@ -15,6 +15,7 @@ const Forgot = () => {
     const navigate = useNavigate()
     const [otp, setOTP] = createSignal(false)
     const [verifyOTP, setVerifyOTP] = createSignal(false)
+    setError(null)
     return (
         <>
             <div className="w-full flex flex-col min-h-[60vh] justify-center items-center gap-8">
@@ -47,18 +48,29 @@ const Forgot = () => {
                                     setOTP(true);
                                 }
                             }catch(err){
-                                setError(err)
+                                setError("Something went wrong. Please try again. If it keeps continuing, please contact us.")
                                 el.target.innerHTML = "Submit"
                                 console.log(err);
                             }
                         }
                     } class="btn my-4 flex gap-2 justify-center items-center">Submit</button>
                     <A href="/login" class="text-bordercol-light dark:text-bordercol-dark text-xl underline text-center w-full">Back</A>
-                    <p class="text-red-500 text-center underline">{error()}</p>
+                    <div class="flex justify-center items-center flex-wrap flex-col">
+                {(typeof error() == "string")?<p class="text-xs lg:text-base border-2 border-red-500 text-red-500 font-semibold px-4"> {error()} </p>
+                :
+                <For each={error()}>{
+                    (err, i) => {
+                        return <p class="text-xl text-red-500 font-semibold"> {err} </p>
+                    }
+                }</For>
+                }
+            </div>
                 </div>
                 
             </div>
-            {otp() &&
+            {setError(null)}
+            { otp() &&
+            
             <div className="w-full fixed inset-0 h-screen bg-slate-800 flex flex-col justify-center items-center font-semibold font-montserrat">
                 <div class="w-max flex flex-col text-start gap-2">
                     <div class="flex flex-col">
@@ -92,7 +104,16 @@ const Forgot = () => {
                         }
                     }>SUBMIT</button>
                 </div>
-                <p class="text-center text-red-500 text-xs underline">{error()}</p>
+                <div class="flex justify-center items-center flex-wrap flex-col">
+                {(typeof error() == "string")?<p class="text-xs lg:text-base border-2 border-red-500 text-red-500 font-semibold px-4"> {error()} </p>
+                :
+                <For each={error()}>{
+                    (err, i) => {
+                        return <p class="text-xl text-red-500 font-semibold"> {err} </p>
+                    }
+                }</For>
+                }
+            </div>
             </div> 
             
             }

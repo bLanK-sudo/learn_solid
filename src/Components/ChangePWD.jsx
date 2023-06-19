@@ -2,6 +2,7 @@ import { useNavigate } from "@solidjs/router";
 import { error, setError } from "../../public/js/store";
 
 const ChangePWD = () => {
+    setError(null)
     const navigate= useNavigate()
     return (
         <div class="w-full h-screen fixed inset-0 z-[5] bg-slate-800 flex flex-col justify-center items-center gap-4">
@@ -24,7 +25,7 @@ const ChangePWD = () => {
                         body: JSON.stringify({email: document.getElementById("email_forgot").value, otp: document.getElementById("otp").value, new_password: document.getElementById("change_pwd").value})
                     })
                     const data = await response.json();
-                    if(!response.ok){el.target.innerHTML = "Submit";setError(data.detail); console.log(response)}
+                    if(!response.ok){el.target.innerHTML = "Submit";setError(data.message); console.log(response)}
                     if(data && response.ok){
                         console.log(data);
                         setError(data.message)
@@ -38,7 +39,16 @@ const ChangePWD = () => {
                 }
             } class="btn justify-center items-center flex gap-2">Submit</button>
             </div>
-            <p class="text-center text-red-500 text-xs underline">{error()}</p>
+            <div class="flex justify-center items-center flex-wrap flex-col">
+                {(typeof error() == "string")?<p class="text-xs lg:text-base border-2 border-red-500 text-red-500 font-semibold px-4"> {error()} </p>
+                :
+                <For each={error()}>{
+                    (err, i) => {
+                        return <p class="text-xl text-red-500 font-semibold"> {err} </p>
+                    }
+                }</For>
+                }
+            </div>
         </div>
     )
 }
